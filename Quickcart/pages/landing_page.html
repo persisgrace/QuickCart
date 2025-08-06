@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickCart Store - Your Trusted Online Shopping Destination</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fshopeases4750back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.6"></script>
+</head>
+<body class="bg-background">
+<!-- Navigation Header -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                    <path d="M16 2L3 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-13-5z"/>
+                    <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                </svg>
+                <span class="ml-2 text-xl font-bold text-primary">QuickCart</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="landing_page.html" class="text-primary font-medium">Home</a>
+                <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors">Categories</a>
+                <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors">Deals</a>
+                <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors">About</a>
+                <a href="javascript:void(0)" class="text-text-secondary hover:text-primary transition-colors">Contact</a>
+            </nav>
+
+            <!-- Cart and Account -->
+            <div class="flex items-center space-x-4">
+                <button id="cartToggle" class="relative p-2 text-text-secondary hover:text-primary transition-colors">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h12M7 13h10"/>
+                    </svg>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                </button>
+                <button class="btn-cta">Sign In</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden border-t border-gray-200">
+        <div class="px-4 py-2 space-y-1">
+            <a href="landing_page.html" class="block px-3 py-2 text-primary font-medium">Home</a>
+            <a href="javascript:void(0)" class="block px-3 py-2 text-text-secondary">Categories</a>
+            <a href="javascript:void(0)" class="block px-3 py-2 text-text-secondary">Deals</a>
+            <a href="javascript:void(0)" class="block px-3 py-2 text-text-secondary">About</a>
+            <a href="javascript:void(0)" class="block px-3 py-2 text-text-secondary">Contact</a>
+        </div>
+    </div>
+</header>
+
+    <!-- Cart Slide-out Preview -->
+    <div id="cartPreview" class="fixed inset-y-0 right-0 w-96 bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold">Shopping Cart (3)</h3>
+                <button id="closeCart" class="text-text-secondary hover:text-text-primary">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="p-6 space-y-4">
+            <!-- Cart Items -->
+            <div class="flex items-center space-x-4">
+                <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop" alt="Wireless Headphones" class="w-16 h-16 object-cover rounded-lg" />
+                <div class="flex-1">
+                    <h4 class="font-medium">Wireless Headphones</h4>
+                    <p class="text-text-secondary text-sm">$89.99</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center">-</button>
+                    <span>1</span>
+                    <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center">+</button>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <img src="https://images.pixabay.com/photo/2016/12/06/09/31/smartphone-1886684_960_720.jpg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop" alt="Smartphone Case" class="w-16 h-16 object-cover rounded-lg" />
+                <div class="flex-1">
+                    <h4 class="font-medium">Smartphone Case</h4>
+                    <p class="text-text-secondary text-sm">$24.99</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center">-</button>
+                    <span>2</span>
+                    <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200 bg-white">
+            <div class="flex justify-between items-center mb-4">
+                <span class="font-semibold">Total: $139.97</span>
+            </div>
+            <button class="w-full btn-cta">Checkout Now</button>
+        </div>
+    </div>
+
+    <!-- Trust Bar -->
+    <section class="bg-surface py-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center items-center space-x-8 text-sm text-text-secondary">
+                <div class="flex items-center space-x-2">
+                    <svg class="h-4 w-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>50,000+ Happy Customers</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="h-4 w-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>SSL Secured</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="h-4 w-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                    </svg>
+                    <span>Free Shipping</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="h-4 w-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>30-Day Returns</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section with Product Carousel -->
+    <section class="relative bg-gradient-to-br from-primary-50 to-secondary-50 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-6xl font-bold text-primary mb-6">
+                    Shop Securely with<br />
+                    <span class="text-accent">Fast, Free Shipping</span>
+                </h1>
+                <p class="text-xl text-text-secondary mb-8 max-w-2xl mx-auto">
+                    Discover amazing products with secure checkout, lightning-fast delivery, and hassle-free returns. Your satisfaction is our guarantee.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-cta text-lg px-8 py-4">Start Shopping Now</button>
+                    <button class="border-2 border-primary text-primary font-semibold px-8 py-4 rounded-lg hover:bg-primary hover:text-white transition-all duration-200">
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Carousel -->
+            <div class="relative">
+                <div id="productCarousel" class="flex space-x-6 overflow-x-auto pb-4 scrollbar-hide">
+                    <!-- Product 1 -->
+                    <div class="product-card min-w-80 p-6">
+                        <div class="relative mb-4">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400&auto=format&fit=crop" alt="Wireless Headphones" class="w-full h-48 object-cover rounded-lg" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <span class="absolute top-2 left-2 bg-accent text-white px-2 py-1 rounded-md text-sm font-medium">Bestseller</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Premium Wireless Headphones</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            </div>
+                            <span class="ml-2 text-sm text-text-secondary">(1,234 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-primary">$89.99</span>
+                                <span class="text-sm text-text-secondary line-through ml-2">$129.99</span>
+                            </div>
+                            <button class="btn-cta">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card min-w-80 p-6">
+                        <div class="relative mb-4">
+                            <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?q=80&w=400&auto=format&fit=crop" alt="Smart Watch" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+                            <span class="absolute top-2 left-2 bg-success text-white px-2 py-1 rounded-md text-sm font-medium">New</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Smart Fitness Watch</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 text-gray-300 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            </div>
+                            <span class="ml-2 text-sm text-text-secondary">(892 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-primary">$199.99</span>
+                            </div>
+                            <button class="btn-cta">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card min-w-80 p-6">
+                        <div class="relative mb-4">
+                            <img src="https://images.pixabay.com/photo/2017/08/12/18/59/snack-2635035_960_720.jpg?q=80&w=400&auto=format&fit=crop" alt="Laptop Stand" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+                            <span class="absolute top-2 left-2 bg-warning text-white px-2 py-1 rounded-md text-sm font-medium">Sale</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Ergonomic Laptop Stand</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            </div>
+                            <span class="ml-2 text-sm text-text-secondary">(567 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-primary">$49.99</span>
+                                <span class="text-sm text-text-secondary line-through ml-2">$79.99</span>
+                            </div>
+                            <button class="btn-cta">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card min-w-80 p-6">
+                        <div class="relative mb-4">
+                            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=400&auto=format&fit=crop" alt="Wireless Mouse" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+                            <span class="absolute top-2 left-2 bg-primary text-white px-2 py-1 rounded-md text-sm font-medium">Popular</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Wireless Gaming Mouse</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 text-gray-300 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            </div>
+                            <span class="ml-2 text-sm text-text-secondary">(2,156 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-primary">$69.99</span>
+                            </div>
+                            <button class="btn-cta">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card min-w-80 p-6">
+                        <div class="relative mb-4">
+                            <img src="https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?q=80&w=400&auto=format&fit=crop" alt="Phone Case" class="w-full h-48 object-cover rounded-lg" loading="lazy" />
+                            <span class="absolute top-2 left-2 bg-accent text-white px-2 py-1 rounded-md text-sm font-medium">Limited</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Premium Phone Case</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            </div>
+                            <span class="ml-2 text-sm text-text-secondary">(743 reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-bold text-primary">$24.99</span>
+                            </div>
+                            <button class="btn-cta">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Agitation Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+                    Tired of Traditional Shopping Hassles?
+                </h2>
+                <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                    We understand the frustrations of modern shopping. Let's solve them together.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-error-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-8 w-8 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Long Checkout Lines</h3>
+                    <p class="text-text-secondary">Average wait time: 15-20 minutes during peak hours</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-error-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-8 w-8 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Limited Store Hours</h3>
+                    <p class="text-text-secondary">Can't shop when it's convenient for you</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-error-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-8 w-8 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a4 4 0 118 0v4m-4 8a2 2 0 100-4 2 2 0 000 4zm6-8a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Parking Hassles</h3>
+                    <p class="text-text-secondary">Wasted time and money finding parking spots</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-error-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-8 w-8 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Product Unavailability</h3>
+                    <p class="text-text-secondary">Items out of stock when you need them most</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Presentation -->
+    <section class="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+                    Experience Shopping Made Simple
+                </h2>
+                <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                    Shop from anywhere, anytime with our streamlined online experience. Complete your purchase in just 30 seconds.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-primary font-bold text-xl">1</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Browse & Select</h3>
+                        <p class="text-text-secondary">Find products instantly with smart search and filters</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-primary font-bold text-xl">2</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Add to Cart</h3>
+                        <p class="text-text-secondary">One-click adding with real-time inventory updates</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-primary font-bold text-xl">3</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Secure Checkout</h3>
+                        <p class="text-text-secondary">Fast, secure payment with multiple options</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <button class="btn-cta text-lg px-8 py-4">Try Shopping Demo</button>
+                    <p class="text-sm text-text-secondary mt-2">No registration required</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Product Categories -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+                    Shop by Category
+                </h2>
+                <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                    Discover our curated collections of premium products across all categories
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Electronics Category -->
+                <div class="product-card group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=500&auto=format&fit=crop" alt="Electronics" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                        <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-2xl font-bold mb-2">Electronics</h3>
+                                <p class="mb-4">Latest gadgets & tech</p>
+                                <button class="bg-white text-primary px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                    Shop Now
+                                </button>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-accent text-white px-2 py-1 rounded-md text-sm">500+ Items</span>
+                    </div>
+                </div>
+
+                <!-- Fashion Category -->
+                <div class="product-card group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-lg">
+                        <img src="https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?q=80&w=500&auto=format&fit=crop" alt="Fashion" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                        <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-2xl font-bold mb-2">Fashion</h3>
+                                <p class="mb-4">Trendy clothing & accessories</p>
+                                <button class="bg-white text-primary px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                    Shop Now
+                                </button>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-accent text-white px-2 py-1 rounded-md text-sm">1200+ Items</span>
+                    </div>
+                </div>
+
+                <!-- Home & Garden Category -->
+                <div class="product-card group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-lg">
+                        <img src="https://images.pixabay.com/photo/2016/11/18/17/20/living-room-1835923_960_720.jpg?q=80&w=500&auto=format&fit=crop" alt="Home & Garden" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                        <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-2xl font-bold mb-2">Home & Garden</h3>
+                                <p class="mb-4">Beautiful home essentials</p>
+                                <button class="bg-white text-primary px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                    Shop Now
+                                </button>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-accent text-white px-2 py-1 rounded-md text-sm">800+ Items</span>
+                    </div>
+                </div>
+
+                <!-- Sports & Fitness Category -->
+                <div class="product-card group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500&auto=format&fit=crop" alt="Sports & Fitness" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                        <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-2xl font-bold mb-2">Sports & Fitness</h3>
+                                <p class="mb-4">Gear for active lifestyle</p>
+                                <button class="bg-white text-primary px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                    Shop Now
+                                </button>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-accent text-white px-2 py-1 rounded-md text-sm">350+ Items</span>
+                    </div>
+                </div>
+
+                <!-- Books & Media Category -->
+                <div class="product-card group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-lg">
+                        <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?q=80&w=500&auto=format&fit=crop" alt="Books & Media" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                        <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-2xl font-bold mb-2">Books & Media</h3>
+                                <p class="mb-4">Knowledge & entertainment</p>
+                                <button class="bg-white text-primary px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                    Shop Now
+                                </button>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-accent text-white px-2 py-1 rounded-md text-sm">2000+ Items</span>
+                    </div>
+                </div>
+
+                <!-- Beauty & Health Category -->
+                <div class="product-card group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-lg">
+                        <img src="https://images.pixabay.com/photo/2016/07/11/15/43/woman-1509956_960_720.jpg?q=80&w=500&auto=format&fit=crop" alt="Beauty & Health" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                        <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <h3 class="text-2xl font-bold mb-2">Beauty & Health</h3>
+                                <p class="mb-4">Wellness & self-care</p>
+                                <button class="bg-white text-primary px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                    Shop Now
+                                </button>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-accent text-white px-2 py-1 rounded-md text-sm">600+ Items</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Key Benefits Section -->
+<section class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+                Why Choose QuickCart?
+            </h2>
+            <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                We've designed every aspect of our service to make your shopping experience exceptional
+            </p>
+        </div>
+
+        <!-- Tabbed Interface -->
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-wrap justify-center mb-8 border-b border-gray-200">
+                <button class="tab-button active px-6 py-3 font-medium text-primary border-b-2 border-primary" data-tab="convenience">
+                    24/7 Convenience
+                </button>
+                <button class="tab-button px-6 py-3 font-medium text-text-secondary hover:text-primary" data-tab="security">
+                    Secure Payments
+                </button>
+                <button class="tab-button px-6 py-3 font-medium text-text-secondary hover:text-primary" data-tab="shipping">
+                    Fast Shipping
+                </button>
+                <button class="tab-button px-6 py-3 font-medium text-text-secondary hover:text-primary" data-tab="returns">
+                    Easy Returns
+                </button>
+                <button class="tab-button px-6 py-3 font-medium text-text-secondary hover:text-primary" data-tab="support">
+                    Customer Service
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Convenience Tab -->
+                <div id="convenience" class="tab-pane active">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">Shop Anytime, Anywhere</h3>
+                            <p class="text-text-secondary mb-6">
+                                No more rushing to stores before closing time. Our platform is available 24/7, 365 days a year. 
+                                Shop during your lunch break, late at night, or early morning - whenever it's convenient for you.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>24/7 online availability</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Mobile-optimized shopping</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Save items for later</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=400&auto=format&fit=crop" alt="24/7 Shopping" class="rounded-lg shadow-lg" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Tab -->
+                <div id="security" class="tab-pane hidden">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">Bank-Level Security</h3>
+                            <p class="text-text-secondary mb-6">
+                                Your payment information is protected with industry-leading encryption and security measures. 
+                                We never store your payment details and use secure payment processors.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>SSL encryption</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>PCI DSS compliant</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Fraud protection</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?q=80&w=400&auto=format&fit=crop" alt="Security" class="rounded-lg shadow-lg" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Tab -->
+                <div id="shipping" class="tab-pane hidden">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">Lightning-Fast Delivery</h3>
+                            <p class="text-text-secondary mb-6">
+                                Get your orders delivered quickly with our network of trusted shipping partners. 
+                                Track your package in real-time from our warehouse to your doorstep.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Free shipping over $50</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Same-day delivery available</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Real-time tracking</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://images.pixabay.com/photo/2014/07/06/13/55/package-385518_960_720.jpg?q=80&w=400&auto=format&fit=crop" alt="Fast Shipping" class="rounded-lg shadow-lg" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Returns Tab -->
+                <div id="returns" class="tab-pane hidden">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">Hassle-Free Returns</h3>
+                            <p class="text-text-secondary mb-6">
+                                Not satisfied with your purchase? No problem! Return any item within 30 days for a full refund. 
+                                We'll even cover the return shipping costs.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>30-day return window</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Free return shipping</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Full refund guarantee</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=400&auto=format&fit=crop" alt="Easy Returns" class="rounded-lg shadow-lg" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support Tab -->
+                <div id="support" class="tab-pane hidden">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4">Expert Customer Support</h3>
+                            <p class="text-text-secondary mb-6">
+                                Our friendly customer service team is here to help you with any questions or concerns. 
+                                Get support via chat, email, or phone whenever you need assistance.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>24/7 live chat support</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Expert product advice</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-success mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span>Order tracking assistance</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <img src="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?q=80&w=400&auto=format&fit=crop" alt="Customer Support" class="rounded-lg shadow-lg" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Customer Testimonials -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+                What Our Customers Say
+            </h2>
+            <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                Join thousands of satisfied customers who trust QuickCart for their online shopping needs
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-surface rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=80&auto=format&fit=crop" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+                    <div class="ml-4">
+                        <h4 class="font-semibold">Sarah Johnson</h4>
+                        <div class="flex text-yellow-400">
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-text-secondary">
+                    "Amazing shopping experience! The checkout process was so smooth and my order arrived the next day. 
+                    The product quality exceeded my expectations. Will definitely shop here again!"
+                </p>
+                <div class="mt-4 text-sm text-text-muted">
+                    <span class="trust-badge">Verified Purchase</span>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-surface rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=80&auto=format&fit=crop" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+                    <div class="ml-4">
+                        <h4 class="font-semibold">Michael Chen</h4>
+                        <div class="flex text-yellow-400">
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-text-secondary">
+                    "I was skeptical about online shopping, but QuickCart changed my mind completely. 
+                    The security features gave me confidence, and the customer service was outstanding when I had questions."
+                </p>
+                <div class="mt-4 text-sm text-text-muted">
+                    <span class="trust-badge">Verified Purchase</span>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-surface rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=80&auto=format&fit=crop" alt="Emily Rodriguez" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+                    <div class="ml-4">
+                        <h4 class="font-semibold">Emily Rodriguez</h4>
+                        <div class="flex text-yellow-400">
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                            <svg class="h-4 w-4 text-gray-300 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-text-secondary">
+                    "The return process was incredibly easy when I needed to exchange a size. 
+                    No hassle, no questions asked. This level of service keeps me coming back as a loyal customer."
+                </p>
+                <div class="mt-4 text-sm text-text-muted">
+                    <span class="trust-badge">Verified Purchase</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Activity Feed -->
+        <div class="mt-16 bg-surface rounded-lg p-6">
+            <h3 class="text-lg font-semibold mb-4 text-center">Recent Customer Activity</h3>
+            <div class="space-y-3 max-w-2xl mx-auto">
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-text-secondary">Jessica from New York just purchased</span>
+                    <span class="font-medium">Wireless Headphones</span>
+                    <span class="text-text-muted">2 min ago</span>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-text-secondary">David from California just reviewed</span>
+                    <span class="font-medium">Smart Fitness Watch ⭐⭐⭐⭐⭐</span>
+                    <span class="text-text-muted">5 min ago</span>
+                </div>
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-text-secondary">Maria from Texas just purchased</span>
+                    <span class="font-medium">Laptop Stand</span>
+                    <span class="text-text-muted">8 min ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Checkout Process Demo -->
+    <section class="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">
+                    Secure & Simple Checkout
+                </h2>
+                <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                    Experience our streamlined checkout process designed for speed, security, and convenience
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <!-- Progress Indicator -->
+                    <div class="flex items-center justify-center mb-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-medium">1</div>
+                                <span class="ml-2 text-sm font-medium text-primary">Cart</span>
+                            </div>
+                            <div class="w-8 h-0.5 bg-primary"></div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-medium">2</div>
+                                <span class="ml-2 text-sm font-medium text-primary">Shipping</span>
+                            </div>
+                            <div class="w-8 h-0.5 bg-gray-200"></div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-gray-200 text-text-muted rounded-full flex items-center justify-center text-sm font-medium">3</div>
+                                <span class="ml-2 text-sm font-medium text-text-muted">Payment</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Order Summary -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Order Summary</h3>
+                            <div class="space-y-4 mb-6">
+                                <div class="flex items-center justify-between">
+                                    <span>Wireless Headphones</span>
+                                    <span>$89.99</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>Smartphone Case (x2)</span>
+                                    <span>$49.98</span>
+                                </div>
+                                <div class="border-t pt-4">
+                                    <div class="flex items-center justify-between">
+                                        <span>Subtotal</span>
+                                        <span>$139.97</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span>Shipping</span>
+                                        <span class="text-success">FREE</span>
+                                    </div>
+                                    <div class="flex items-center justify-between font-semibold text-lg">
+                                        <span>Total</span>
+                                        <span>$139.97</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Shipping Calculator -->
+                            <div class="bg-surface rounded-lg p-4">
+                                <h4 class="font-medium mb-3">Shipping Options</h4>
+                                <div class="space-y-2">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="shipping" class="mr-3" checked />
+                                        <span class="flex-1">Standard (5-7 days)</span>
+                                        <span class="text-success font-medium">FREE</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="shipping" class="mr-3" />
+                                        <span class="flex-1">Express (2-3 days)</span>
+                                        <span>$9.99</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="shipping" class="mr-3" />
+                                        <span class="flex-1">Same Day</span>
+                                        <span>$19.99</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Options -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Payment Methods</h3>
+                            <div class="space-y-4 mb-6">
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="border border-gray-200 rounded-lg p-4 text-center hover:border-primary cursor-pointer">
+                                        <svg class="h-8 w-8 mx-auto mb-2 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 2v2h16V6H4zm0 4v6h16v-6H4z"/>
+                                        </svg>
+                                        <span class="text-sm">Credit Card</span>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4 text-center hover:border-primary cursor-pointer">
+                                        <svg class="h-8 w-8 mx-auto mb-2 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h8.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-.635 4.005c-.08.52-.527.901-1.05.901z"/>
+                                        </svg>
+                                        <span class="text-sm">PayPal</span>
+                                    </div>
+                                    <div class="border border-gray-200 rounded-lg p-4 text-center hover:border-primary cursor-pointer">
+                                        <svg class="h-8 w-8 mx-auto mb-2 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                        </svg>
+                                        <span class="text-sm">Apple Pay</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Security Badges -->
+                            <div class="bg-surface rounded-lg p-4 mb-6">
+                                <h4 class="font-medium mb-3">Security & Trust</h4>
+                                <div class="flex items-center space-x-4 text-sm">
+                                    <div class="security-badge">
+                                        <svg class="h-4 w-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>SSL Encrypted</span>
+                                    </div>
+                                    <div class="security-badge">
+                                        <svg class="h-4 w-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>PCI Compliant</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Guest Checkout Option -->
+                            <div class="text-center">
+                                <button class="btn-cta w-full mb-3">Complete Purchase</button>
+                                <p class="text-sm text-text-secondary">
+                                    <a href="javascript:void(0)" class="text-primary hover:underline">Continue as guest</a> or 
+                                    <a href="javascript:void(0)" class="text-primary hover:underline">create account</a> for faster checkout
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Account Benefits -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+                Create Your Account Today
+            </h2>
+            <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                Unlock exclusive benefits and personalized shopping experience with a free QuickCart account
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-primary-100 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Order History & Tracking</h3>
+                            <p class="text-text-secondary">Keep track of all your purchases and monitor delivery status in real-time</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-primary-100 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Wishlist & Save for Later</h3>
+                            <p class="text-text-secondary">Save your favorite items and get notified when they go on sale</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-primary-100 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Exclusive Member Discounts</h3>
+                            <p class="text-text-secondary">Get access to member-only deals and early access to sales</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-primary-100 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+                            <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Personalized Recommendations</h3>
+                            <p class="text-text-secondary">Discover products tailored to your preferences and shopping history</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="bg-surface rounded-2xl p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Join QuickCart Today</h3>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Email Address</label>
+                        <input type="email" class="form-input" placeholder="Enter your email" required />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-text-primary mb-2">Password</label>
+                        <input type="password" class="form-input" placeholder="Create a password" required />
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="newsletter" class="mr-3" />
+                        <label for="newsletter" class="text-sm text-text-secondary">
+                            Subscribe to our newsletter for exclusive deals and updates
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-cta w-full">Create Free Account</button>
+                    <p class="text-xs text-text-secondary text-center">
+                        By creating an account, you agree to our 
+                        <a href="javascript:void(0)" class="text-primary hover:underline">Terms of Service</a> and 
+                        <a href="javascript:void(0)" class="text-primary hover:underline">Privacy Policy</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-xl text-text-secondary max-w-3xl mx-auto">
+                    Find answers to common questions about shopping, shipping, returns, and more
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Search Bar -->
+                <div class="mb-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Search FAQ..." class="form-input pl-10" />
+                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- FAQ Categories -->
+                <div class="flex flex-wrap justify-center mb-8 space-x-4">
+                    <button class="faq-category active px-4 py-2 rounded-lg bg-primary text-white" data-category="all">All</button>
+                    <button class="faq-category px-4 py-2 rounded-lg bg-white text-text-secondary hover:bg-primary hover:text-white" data-category="shipping">Shipping</button>
+                    <button class="faq-category px-4 py-2 rounded-lg bg-white text-text-secondary hover:bg-primary hover:text-white" data-category="returns">Returns</button>
+                    <button class="faq-category px-4 py-2 rounded-lg bg-white text-text-secondary hover:bg-primary hover:text-white" data-category="payments">Payments</button>
+                    <button class="faq-category px-4 py-2 rounded-lg bg-white text-text-secondary hover:bg-primary hover:text-white" data-category="security">Security</button>
+                </div>
+
+                <!-- FAQ Items -->
+                <div class="space-y-4">
+                    <div class="faq-item bg-white rounded-lg border border-gray-200" data-category="shipping">
+                        <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50">
+                            <span class="font-medium">How long does shipping take?</span>
+                            <svg class="h-5 w-5 text-text-muted transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 text-text-secondary hidden">
+                            <p>We offer multiple shipping options: Standard shipping (5-7 business days) is free on orders over $50. Express shipping (2-3 business days) costs $9.99, and same-day delivery is available in select areas for $19.99.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-lg border border-gray-200" data-category="returns">
+                        <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50">
+                            <span class="font-medium">What is your return policy?</span>
+                            <svg class="h-5 w-5 text-text-muted transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 text-text-secondary hidden">
+                            <p>We offer a 30-day return policy for most items. Items must be in original condition with tags attached. We provide free return shipping labels, and refunds are processed within 3-5 business days after we receive your return.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-lg border border-gray-200" data-category="payments">
+                        <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50">
+                            <span class="font-medium">What payment methods do you accept?</span>
+                            <svg class="h-5 w-5 text-text-muted transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 text-text-secondary hidden">
+                            <p>We accept all major credit cards (Visa, MasterCard, American Express, Discover), PayPal, Apple Pay, Google Pay, and Shop Pay. All payments are processed securely with SSL encryption.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-lg border border-gray-200" data-category="security">
+                        <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50">
+                            <span class="font-medium">Is my personal information secure?</span>
+                            <svg class="h-5 w-5 text-text-muted transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 text-text-secondary hidden">
+                            <p>Yes, we take security seriously. We use SSL encryption, are PCI DSS compliant, and never store your payment information on our servers. Your personal data is protected according to our privacy policy and industry best practices.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-lg border border-gray-200" data-category="shipping">
+                        <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50">
+                            <span class="font-medium">Can I track my order?</span>
+                            <svg class="h-5 w-5 text-text-muted transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 text-text-secondary hidden">
+                            <p>Absolutely! Once your order ships, you'll receive a tracking number via email. You can track your package in real-time through your account dashboard or by entering the tracking number on our website.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-lg border border-gray-200" data-category="payments">
+                        <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50">
+                            <span class="font-medium">Do you offer payment plans?</span>
+                            <svg class="h-5 w-5 text-text-muted transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="px-6 pb-4 text-text-secondary hidden">
+                            <p>Yes, we partner with Klarna and Afterpay to offer flexible payment options. You can split your purchase into 4 interest-free payments or choose longer-term financing options for larger purchases.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Support -->
+                <div class="mt-12 text-center">
+                    <p class="text-text-secondary mb-4">Can't find what you're looking for?</p>
+                    <button class="btn-cta">Contact Customer Support</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers & Urgency -->
+    <section class="py-20 bg-gradient-to-r from-accent-500 to-accent-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    Limited Time Flash Sale!
+                </h2>
+                <p class="text-xl text-accent-100 max-w-3xl mx-auto mb-8">
+                    Don't miss out on incredible savings. These deals won't last long!
+                </p>
+                
+                <!-- Countdown Timer -->
+                <div class="flex justify-center items-center space-x-4 mb-8">
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                        <div class="text-2xl font-bold" id="hours">23</div>
+                        <div class="text-sm">Hours</div>
+                    </div>
+                    <div class="text-2xl">:</div>
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                        <div class="text-2xl font-bold" id="minutes">45</div>
+                        <div class="text-sm">Minutes</div>
+                    </div>
+                    <div class="text-2xl">:</div>
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                        <div class="text-2xl font-bold" id="seconds">32</div>
+                        <div class="text-sm">Seconds</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Flash Sale Item 1 -->
+                <div class="bg-white text-text-primary rounded-lg p-6 relative">
+                    <div class="absolute -top-3 left-4">
+                        <span class="bg-error text-white px-3 py-1 rounded-full text-sm font-medium">50% OFF</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=300&auto=format&fit=crop" alt="Wireless Headphones" class="w-full h-40 object-cover rounded-lg mb-4" loading="lazy" />
+                    <h3 class="font-semibold text-lg mb-2">Premium Wireless Headphones</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-2xl font-bold text-accent">$44.99</span>
+                            <span class="text-sm text-text-secondary line-through ml-2">$89.99</span>
+                        </div>
+                        <span class="urgency-indicator">Only 12 left!</span>
+                    </div>
+                    <button class="w-full bg-accent text-white font-semibold py-3 rounded-lg hover:bg-accent-600 transition-colors">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <!-- Flash Sale Item 2 -->
+                <div class="bg-white text-text-primary rounded-lg p-6 relative">
+                    <div class="absolute -top-3 left-4">
+                        <span class="bg-error text-white px-3 py-1 rounded-full text-sm font-medium">40% OFF</span>
+                    </div>
+                    <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?q=80&w=300&auto=format&fit=crop" alt="Smart Watch" class="w-full h-40 object-cover rounded-lg mb-4" loading="lazy" />
+                    <h3 class="font-semibold text-lg mb-2">Smart Fitness Watch</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-2xl font-bold text-accent">$119.99</span>
+                            <span class="text-sm text-text-secondary line-through ml-2">$199.99</span>
+                        </div>
+                        <span class="urgency-indicator">Only 8 left!</span>
+                    </div>
+                    <button class="w-full bg-accent text-white font-semibold py-3 rounded-lg hover:bg-accent-600 transition-colors">
+                        Add to Cart
+                    </button>
+                </div>
+
+                <!-- Flash Sale Item 3 -->
+                <div class="bg-white text-text-primary rounded-lg p-6 relative">
+                    <div class="absolute -top-3 left-4">
+                        <span class="bg-error text-white px-3 py-1 rounded-full text-sm font-medium">35% OFF</span>
+                    </div>
+                    <img src="https://images.pixabay.com/photo/2017/08/12/18/59/snack-2635035_960_720.jpg?q=80&w=300&auto=format&fit=crop" alt="Laptop Stand" class="w-full h-40 object-cover rounded-lg mb-4" loading="lazy" />
+                    <h3 class="font-semibold text-lg mb-2">Ergonomic Laptop Stand</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-2xl font-bold text-accent">$32.49</span>
+                            <span class="text-sm text-text-secondary line-through ml-2">$49.99</span>
+                        </div>
+                        <span class="urgency-indicator">Only 15 left!</span>
+                    </div>
+                    <button class="w-full bg-accent text-white font-semibold py-3 rounded-lg hover:bg-accent-600 transition-colors">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="bg-white text-accent font-bold px-8 py-4 rounded-lg text-lg hover:bg-gray-100 transition-colors">
+                    View All Flash Sale Items
+                </button>
+            </div>
+        </div>
+    </section>
+
+<!-- Final CTA Section -->
+<section class="py-20 bg-primary text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">
+            Ready to Start Shopping?
+        </h2>
+        <p class="text-xl text-primary-100 max-w-3xl mx-auto mb-12">
+            Join thousands of satisfied customers who trust QuickCart for secure, convenient, and fast online shopping. 
+            Your perfect shopping experience is just one click away.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+            <button class="bg-accent text-white font-bold px-8 py-4 rounded-lg text-lg hover:bg-accent-600 transition-colors">
+                Start Shopping Now
+            </button>
+            <button class="border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-all duration-200">
+                Create Free Account
+            </button>
+        </div>
+
+        <!-- Success Metrics -->
+        <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div class="text-center">
+                <div class="text-3xl font-bold mb-2">50,000+</div>
+                <div class="text-primary-100">Happy Customers</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold mb-2">4.9/5</div>
+                <div class="text-primary-100">Customer Rating</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold mb-2">99.9%</div>
+                <div class="text-primary-100">Uptime</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold mb-2">24/7</div>
+                <div class="text-primary-100">Support</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+            <!-- Company Info -->
+            <div>
+                <div class="flex items-center mb-4">
+                    <svg class="h-8 w-8 text-accent" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L3 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-13-5z"/>
+                        <path d="M12 14l2 2 6-6" stroke="white" stroke-width="2" fill="none"/>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold">QuickCart</span>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    Your trusted online shopping destination for secure, convenient, and fast e-commerce experience.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                        </svg>
+                    </a>
+                    <a href="javascript:void(0)" class="text-gray-400 hover:text-white">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="font-semibold text-lg mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">About Us</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Contact</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Careers</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Press</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Customer Service -->
+            <div>
+                <h3 class="font-semibold text-lg mb-4">Customer Service</h3>
+                <ul class="space-y-2">
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Help Center</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Shipping Info</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Returns</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Track Order</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div>
+                <h3 class="font-semibold text-lg mb-4">Legal</h3>
+                <ul class="space-y-2">
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Accessibility</a></li>
+                    <li><a href="javascript:void(0)" class="text-gray-400 hover:text-white">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-12 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 QuickCart Store. All Rights Reserved.
+                </p>
+                <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=40&auto=format&fit=crop" alt="SSL" class="h-8" loading="lazy" />
+                    <img src="https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?q=80&w=40&auto=format&fit=crop" alt="Security" class="h-8" loading="lazy" />
+                    <img src="https://images.pixabay.com/photo/2016/12/06/09/31/smartphone-1886684_960_720.jpg?q=80&w=40&auto=format&fit=crop" alt="Payment" class="h-8" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- JavaScript for Interactive Features -->
+    <script>
+        // Cart functionality
+        const cartToggle = document.getElementById('cartToggle');
+        const cartPreview = document.getElementById('cartPreview');
+        const closeCart = document.getElementById('closeCart');
+
+        cartToggle.addEventListener('click', () => {
+            cartPreview.classList.remove('translate-x-full');
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartPreview.classList.add('translate-x-full');
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and panes
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active', 'text-primary', 'border-primary');
+                    btn.classList.add('text-text-secondary');
+                });
+                tabPanes.forEach(pane => {
+                    pane.classList.add('hidden');
+                    pane.classList.remove('active');
+                });
+
+                // Add active class to clicked button and corresponding pane
+                button.classList.add('active', 'text-primary', 'border-b-2', 'border-primary');
+                button.classList.remove('text-text-secondary');
+                document.getElementById(tabId).classList.remove('hidden');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // FAQ functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const button = item.querySelector('button');
+            const content = item.querySelector('.hidden');
+            const icon = button.querySelector('svg');
+
+            button.addEventListener('click', () => {
+                const isOpen = !content.classList.contains('hidden');
+                
+                if (isOpen) {
+                    content.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                } else {
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            const distance = tomorrow.getTime() - now;
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add to cart animation
+        document.querySelectorAll('button:contains("Add to Cart")').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.add('animate-cart-update');
+                setTimeout(() => {
+                    this.classList.remove('animate-cart-update');
+                }, 300);
+            });
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
